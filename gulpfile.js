@@ -1,10 +1,10 @@
-var gulp       = require('gulp');
-var browserify = require('browserify');
-var babelify   = require('babelify');
-var uglify     = require('gulp-uglify');
-var streamify  = require('gulp-streamify');
-var source     = require('vinyl-source-stream');
-var util       = require('gulp-util');
+var gulp            = require('gulp');
+var browserify      = require('browserify');
+var babelify        = require('babelify');
+var uglify          = require('gulp-uglify');
+var streamify       = require('gulp-streamify');
+var source          = require('vinyl-source-stream');
+var util            = require('gulp-util');
 
 gulp.task('build', function() {
   browserify('./src/build.js')

@@ -1,7 +1,6 @@
 module.exports = React.createClass({
   handleChange: function(inputName, evt) {
-    // replace this with actual behavior
-    console.log(inputName + ": " + evt.target.value);
+    this.props.updateSignature(inputName, evt);
   },
   render: function() {
     return(
@@ -26,7 +25,7 @@ module.exports = React.createClass({
           <div className="small-12 columns">
             <label>
               Direct Phone Number
-              <input type="text" onChange={this.handleChange.bind(null, 'directPhoneNumber')} />
+              <input type="tel" onChange={this.handleChange.bind(null, 'directPhoneNumber')} />
             </label>
           </div>
         </div>
@@ -34,7 +33,7 @@ module.exports = React.createClass({
           <div className="small-12 columns">
             <label>
               Cell Phone Number
-              <input type="text" onChange={this.handleChange.bind(null, 'cellPhoneNumber')} />
+              <input type="tel" onChange={this.handleChange.bind(null, 'cellPhoneNumber')} />
             </label>
           </div>
         </div>

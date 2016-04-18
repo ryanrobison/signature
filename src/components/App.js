@@ -1,5 +1,6 @@
 const Form = require('./Form')
 const Signature = require('./Signature')
+var phoneFormatter = require('phone-formatter');
 
 module.exports = React.createClass({
   getInitialState: function() {
@@ -11,8 +12,19 @@ module.exports = React.createClass({
       emailAddress: ''
     }
   },
-  // you'll need to write a function that modifies the App's state (see above)
-  // that you'll pass and use in the Form component
+  updateSignature: function(inputName, evt) {
+    var newState = {},
+        value = evt.target.value;
+
+    if ( evt.target.type === 'tel' ) {
+      if ( value.length > 0 ) {
+        value = phoneFormatter.format(value, "(NNN) NNN-NNNN");
+      }
+    }
+
+    newState[inputName] = value;
+    this.setState(newState);
+  },
   render: function() {
     return(
       <div className="row">
@@ -26,7 +38,7 @@ module.exports = React.createClass({
           <div className="row">
             <div className="small-5 columns">
               <h4>Step 1: Enter Your Information</h4>
-              <Form />
+              <Form updateSignature={this.updateSignature} />
             </div>
             <div className="small-6 columns">
               <h4>Step 2: Copy Your Signature</h4>
